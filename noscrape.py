@@ -2,17 +2,39 @@ import json
 import random
 import subprocess
 
-
 from load_noscrape_lib import load_noscrape_lib
 
 
 class Noscrape:
+    """
+    A class to obfuscate text using a mapping of characters to Unicode Private Use Area (PUA) characters
+    and render the obfuscated text using an external binary.
+    """
+
     def __init__(self, font_path: str):
+        """
+        Initialize the Noscrape object with a font path.
+
+        Parameters:
+            font_path (str): The path to the font file to be used for rendering.
+        """
         self.font_path = font_path
         self.mapping = {}
         self.pua_range = list(range(0xE000, 0xF8FF + 1))
 
     def obfuscate(self, s):
+        """
+        Obfuscate the input based on its type (string, integer, or list).
+
+        Parameters:
+            s (str, int, list): The input to be obfuscated.
+
+        Returns:
+            str or list: The obfuscated version of the input.
+
+        Raises:
+            TypeError: If the input is not a string, integer, or list.
+        """
         if isinstance(s, str):
             return self.obfuscate_string(s)
         elif isinstance(s, int):
@@ -23,6 +45,18 @@ class Noscrape:
             raise TypeError("Input must be a string, integer, or list")
 
     def obfuscate_string(self, s):
+        """
+        Obfuscate a string by mapping its characters to random PUA characters.
+
+        Parameters:
+            s (str): The string to be obfuscated.
+
+        Returns:
+            str: The obfuscated string.
+
+        Raises:
+            ValueError: If no available PUA characters are left for obfuscation.
+        """
         # Available characters are those in the PUA range that haven't been mapped yet
         available_chars = list(set(self.pua_range) - set(self.mapping.values()))
 
@@ -42,6 +76,16 @@ class Noscrape:
         return obfuscated
 
     def render(self):
+        """
+        Render the obfuscated text using the external binary.
+
+        Returns:
+            str: The output from the rendering binary.
+
+        Raises:
+            subprocess.CalledProcessError: If there is an error during the rendering process.
+        """
+        # Load the appropriate binary for the current system
         binary = load_noscrape_lib()
 
         # Prepare the parameters for the rendering library

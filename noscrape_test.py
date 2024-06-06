@@ -2,6 +2,7 @@ import unittest
 
 import noscrape
 
+
 class TestNoscrape(unittest.TestCase):
     def test_noscrape(self):
         n = noscrape.Noscrape("example/example.ttf")

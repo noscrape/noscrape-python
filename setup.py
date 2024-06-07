@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="noscrape",  # Replace with your own package name
-    version="1.0.3",  # Initial release version
+    version="1.0.4",  # Initial release version
     author="Bernhard Schönberger",
     author_email="noscrape@gmx.de",
     description="A package to obfuscate text using Unicode Private Use Area characters",

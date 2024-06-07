@@ -2,7 +2,7 @@ import json
 import random
 import subprocess
 
-from load_noscrape_lib import load_noscrape_lib
+from noscrape.load_noscrape_lib import load_noscrape_lib
 
 
 class Noscrape:

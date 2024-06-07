@@ -28,13 +28,17 @@ pip install noscrape
 ```
 
 ## Usage
-```python
-import noscrape
 
-n = noscrape.Noscrape("example/example.ttf")
+```python
+
+from noscrape import Noscrape
+
+n = Noscrape("example/example.ttf")
 
 text = n.obfuscate("test")
 
 b64_font = n.render()
 ```
+
+## Putting it together
 

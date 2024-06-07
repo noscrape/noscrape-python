@@ -8,10 +8,10 @@ class TestNoscrape(unittest.TestCase):
         n = Noscrape("../example/example.ttf")
 
         xy = n.obfuscate("test")
-        self.assertNotEquals(xy, "test")
+        self.assertNotEqual(xy, "test")
 
         xyz = n.render()
-        self.assertNotEquals(xyz, "test")
+        self.assertNotEqual(xyz, "test")
 
 
 if __name__ == '__main__':
